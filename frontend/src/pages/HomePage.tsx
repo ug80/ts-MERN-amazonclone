@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { sampleProducts } from '../Data'
 import { Col, Row } from 'react-bootstrap'
 import { Product } from '../types/Product'
@@ -8,6 +7,7 @@ import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 import { getError } from '../utils'
 import { ApiError } from '../types/ApiError'
+import ProductItem from '../components/ProductItem'
 
 type State = {
   products: Product[]
@@ -68,15 +68,7 @@ export default function HomePage() {
     <Row>
       {sampleProducts.map((product) => (
         <Col key={product.slug} sm="6" md="4" lg="3">
-          <Link to={'product/' + product.slug}>
-            <img
-              src={product.image}
-              alt={product.name}
-              className="product-image"
-            />
-            <h2>{product.name}</h2>
-            <p>${product.price}</p>
-          </Link>
+          <ProductItem product={product} />
         </Col>
       ))}
     </Row>
