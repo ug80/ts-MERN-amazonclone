@@ -1,4 +1,4 @@
-import { sampleProducts } from '../Data'
+//import { sampleProducts } from '../Data'
 import { Col, Row } from 'react-bootstrap'
 import { Product } from '../types/Product'
 import { useEffect, useReducer } from 'react'
@@ -8,6 +8,7 @@ import MessageBox from '../components/MessageBox'
 import { getError } from '../utils'
 import { ApiError } from '../types/ApiError'
 import ProductItem from '../components/ProductItem'
+import { Helmet } from 'react-helmet-async'
 
 type State = {
   products: Product[]
@@ -66,7 +67,10 @@ export default function HomePage() {
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <Row>
-      {sampleProducts.map((product) => (
+      <Helmet>
+        <title>AMAZON-CLONE</title>
+      </Helmet>
+      {products.map((product) => (
         <Col key={product.slug} sm="6" md="4" lg="3">
           <ProductItem product={product} />
         </Col>
